@@ -1,0 +1,461 @@
+@import 'config';
+
+:root {
+	//*colors
+	// primary
+	--intro-and-email-bg: #{$intro-and-email-bg};
+	--main-bg: #{$main-bg};
+	--footer-bg: #{$footer-bg};
+	--testimonials-bg: #{$testimonials-bg};
+	// accent
+	--cyan: #{$cyan};
+	--blue: #{$blue};
+	--light-red: #{$light-red};
+	// neutral
+	--white: #{$white};
+	//button-color
+	--button-color: #{$button-color};
+	//*typography
+	--raleway: #{$raleway};
+	--open-sans: #{$open-sans};
+	/* font size: 1rem = 10px */
+	--font-size: #{$font-size};
+	// font-weight
+	--regular: #{$regular};
+	--bold: #{$bold};
+	//*design elements
+	--transition: #{$transition};
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+html {
+	box-sizing: border-box;
+	font-size: $font-size;
+}
+
+ul {
+	list-style-type: none;
+}
+a {
+	color: var(--white);
+	text-decoration: none;
+	transition: var(--transition) border-color, var(--transition) color;
+	&:hover {
+		border-color: var(--white);
+	}
+}
+body {
+	color: var(--white);
+	background-color: $intro-and-email-bg;
+}
+
+// type specs
+.text {
+	@include text(header-nav, 0px, $raleway, $regular, 1.2rem, 1.167);
+	&-intro {
+		@include text(heading, 0px, $raleway, $bold, 2.4rem, 1.5);
+		@include text(paragraph, 0px, $open-sans, $regular, 1.4rem, 1.5);
+	}
+	&-feature {
+		@include text(heading, 0px, $raleway, $bold, 1.8rem, 1.333);
+		@include text(paragraph, 0px, $open-sans, $regular, 1.4rem, 1.5);
+	}
+	&-productive {
+		&-heading {
+			letter-spacing: 0px;
+			font-family: var(--raleway);
+			font-weight: var(--bold);
+			font-size: 1.8rem;
+			line-height: 1.333;
+		}
+		&-paragraph {
+			letter-spacing: 0px;
+			font-weight: var(--regular);
+			font-family: var(--open-sans);
+			line-height: 1.5;
+			font-size: 1.4rem;
+		}
+		&-link {
+			letter-spacing: 0px;
+			font-weight: var(--regular);
+			font-family: var(--open-sans);
+			color: var(--cyan);
+			line-height: 1.5;
+			font-size: 1.2rem;
+			line-height: 1.333;
+		}
+	}
+	&-testimonial {
+		@include text(paragraph, 0px, $open-sans, $regular, 1rem, 1.8);
+	}
+	&-profile {
+		@include text(name, 0.5px, $open-sans, $bold, 1rem, 1.2);
+		@include text(title, 0.57px, $open-sans, $regular, 0.8rem, 1.25);
+	}
+	&-cta {
+		@include text(heading, 0px, $raleway, $bold, 1.8rem, 1.333);
+		@include text(paragraph, 0px, $open-sans, $regular, 1.4rem, 1.5);
+	}
+	&-footer {
+		@include text(address, 0px, $open-sans, $regular, 1.6rem, 1.5);
+		@include text(contact, 0px, $open-sans, $regular, 1.4rem, 1.5);
+		@include text(nav-item, 0px, $open-sans, $regular, 1.6rem, 1.375);
+	}
+}
+
+// buttons
+.button {
+	background: $button-color;
+	border: none;
+	color: $white;
+	font-weight: $bold;
+	font-family: $raleway;
+	transition: $transition filter, $transition box-shadow, $transition transform;
+	&:hover {
+		cursor: pointer;
+		filter: brightness(1.1);
+		transform: translateY(-2px);
+		background: $cyan;
+	}
+	&--intro {
+		margin-top: 3.2rem;
+		padding: 1.6rem 0;
+		font-size: 1.4rem;
+		width: 24rem;
+		line-height: 1.143;
+		@include border-radius(default);
+	}
+	&--cta {
+		font-size: 1.4rem;
+		font-family: $raleway;
+		font-weight: $bold;
+		line-height: 1.143;
+		padding: 1.6rem 0;
+		@include border-radius(default);
+	}
+}
+
+// header
+header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 2.4rem 2.4rem 0;
+}
+@media (max-width: 639px) {
+	.brand-logo {
+		width: 8rem;
+	}
+}
+.menu {
+	&__items {
+		display: flex;
+	}
+	&__item:not(:last-child) {
+		margin-right: 2.4rem;
+	}
+}
+
+// main
+// intro
+.intro {
+	text-align: center;
+	padding-top: 4.8rem;
+	background: url(/images/bg-curvy-mobile.svg),
+		linear-gradient($intro-and-email-bg 61%, $main-bg 61%);
+	background-position-y: 52%;
+	background-repeat: no-repeat;
+	background-size: contain;
+	&__content-container {
+		padding: 0 3.3rem;
+	}
+	&__heading {
+		margin-bottom: 1.5rem;
+		// margin-bottom: 3.2rem;
+	}
+	&__image {
+		width: 100%;
+		&-container {
+			width: 81.167%;
+			margin: 0 auto;
+			max-width: 72rem;
+			margin-bottom: 3.3rem;
+		}
+	}
+}
+
+// features
+.features {
+	background-color: $main-bg;
+	text-align: center;
+	padding: 12rem 2.7rem 16rem;
+}
+.feature {
+	&__cards-container {
+		max-width: 50rem;
+		margin: 0 auto;
+	}
+	&__heading {
+		margin-top: 2.4rem;
+		margin-bottom: 0.8rem;
+	}
+}
+
+// productivity
+.productivity {
+	background-color: $main-bg;
+	padding-bottom: 16rem;
+	&__wrap {
+		padding: 0 2.8rem;
+		> {
+			:first-child {
+				text-align: center;
+			}
+			:not(:last-child) {
+				margin-bottom: 1.6rem;
+			}
+		}
+	}
+	&__image {
+		width: 100%;
+		&-container {
+			display: flex;
+			max-width: 30.4rem;
+			align-items: center;
+			justify-content: center;
+			margin: 0 auto;
+			margin-bottom: 4.8rem;
+		}
+	}
+	&__link {
+		display: inline-block;
+		text-decoration: none;
+		border-bottom: 0.1rem solid $cyan;
+		padding-bottom: 0.6rem;
+		transition: $transition padding-left;
+		&::after {
+			content: '';
+			background-image: url(/images/icon-arrow.svg);
+			background-size: contain;
+			display: inline-block;
+			vertical-align: middle;
+			width: 1.2rem;
+			height: 1.2rem;
+			margin-left: 0.7rem;
+		}
+		&:hover {
+			padding-left: 1.2rem;
+		}
+	}
+}
+
+// testimonials
+.testimonials {
+	background-color: $main-bg;
+	padding-bottom: 16rem;
+	&__container {
+		background-image: url(/images/bg-quotes.png);
+		background-repeat: no-repeat;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		flex-wrap: wrap;
+		justify-content: space-evenly;
+	}
+	&__card {
+		background-color: $testimonials-bg;
+		@include border-radius(small);
+		transition: $transition transform, $transition box-shadow;
+	}
+}
+
+// profile
+.profile {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin-top: 1.7rem; //!max-width: 959px
+	&__avatar {
+		width: 2.4rem;
+		height: 2.4rem;
+		margin-right: 0.8rem;
+		&-img {
+			width: 100%;
+			border-radius: 50%;
+		}
+	}
+	&__name {
+		margin-bottom: 0.4rem;
+	}
+}
+
+.cta {
+	background-color: $main-bg;
+	position: relative;
+	min-height: 35.3rem;
+	text-align: center;
+	&::after {
+		content: ' ';
+		background-color: $footer-bg;
+		width: 100%;
+		position: absolute;
+		height: 47.32%;
+		bottom: 0;
+		left: 0;
+		z-index: 1;
+	}
+	&__container {
+		@include border-radius(cta);
+		background-color: $intro-and-email-bg;
+		margin: 0 auto;
+		//!check if really needs box shadow
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		z-index: 2;
+		width: 89.6%;
+		max-width: 86.3rem;
+		padding: 4rem 2.8rem 3.7rem; //!max-width: 799px
+	}
+	&__heading {
+		margin-bottom: 1.6rem;
+	}
+}
+
+// input
+.input {
+	display: flex;
+	margin-top: 3.2rem; //!max-width: 739px
+	flex-direction: column; //!max-width: 739px
+	&__email {
+		border: none;
+		outline: none;
+		font-family: $open-sans;
+		font-weight: $regular;
+		@include border-radius(default);
+		font-size: 1rem; //!max-width: 739px
+		line-height: 1.4; //!max-width: 739px
+		padding: 1.7rem; //!max-width: 739px
+		margin-bottom: 2.4rem; //!max-width: 739px
+		&::placeholder {
+			color: #c0c0c0;
+		}
+	}
+}
+
+// footer
+footer {
+	background-color: $footer-bg;
+}
+.footer {
+	&__container {
+		padding: 7.4rem 2.8rem 0;
+	}
+	&__content {
+		margin-top: 4rem;
+		display: flex;
+		flex-flow: column nowrap;
+	}
+	&__nav {
+		margin-bottom: 4.8rem;
+		&:first-of-type {
+			margin-right: 8rem;
+		}
+		&:last-of-type {
+			margin-right: 11.4rem;
+		}
+		> :not(:last-child) {
+			margin-bottom: 1.6rem;
+		}
+	}
+}
+
+.address {
+	max-width: 38rem;
+	margin-right: 8rem;
+}
+.address,
+.phone,
+.email {
+	display: flex;
+}
+.phone,
+.address {
+	margin-bottom: 1.6rem;
+}
+.phone,
+.email {
+	align-items: center;
+}
+.contact {
+	margin-bottom: 8rem;
+	max-width: 17.1rem;
+	margin-right: 14.6rem;
+}
+.vector-icon {
+	width: 2.4rem;
+	height: 2.4rem;
+	margin-right: 1.8rem;
+	display: flex;
+	align-items: center;
+	svg {
+		width: 100%;
+	}
+}
+.socials {
+	display: flex;
+	justify-content: center;
+}
+.social {
+	border: 1px solid $white;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 2.7rem;
+	height: 2.7rem;
+	transition: $transition border-color;
+	&:hover {
+		cursor: pointer;
+		border-color: $cyan;
+		> svg {
+			> path {
+				fill: $cyan;
+			}
+		}
+	}
+	&:not(:last-child) {
+		margin-right: 1rem;
+	}
+	&__icon {
+		width: 1.2rem;
+		&:first-child {
+			height: 1.2rem;
+		}
+	}
+}
+svg > path {
+	transition: $transition fill;
+}
+.attribution {
+	font-size: 11px;
+	text-align: center;
+	padding: 2rem 0;
+	font-family: $open-sans;
+	a {
+		color: $blue;
+		&:hover {
+			font-weight: $bold;
+			text-decoration: underline;
+		}
+	}
+}
+
+@import 'media';

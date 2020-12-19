@@ -1,0 +1,57 @@
+// FONTS
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Raleway:wght@400;700&display=swap');
+// font-family
+$raleway: 'Raleway', sans-serif;
+$open-sans: 'Open Sans', sans-serif;
+// font-weight
+$regular: 400;
+$bold: 700;
+/* font size: 1rem = 10px */
+$font-size: 62.5%;
+// COLORS
+$intro-and-email-bg: hsl(217, 28%, 15%);
+$main-bg: hsl(218, 28%, 13%);
+$footer-bg: hsl(216, 53%, 9%);
+$testimonials-bg: hsl(219, 30%, 18%);
+$cyan: hsl(176, 68%, 64%);
+$blue: hsl(198, 60%, 50%);
+$light-red: hsl(0, 100%, 63%);
+$white: hsl(0, 0%, 100%);
+$button-color: linear-gradient(159deg, $cyan 0%, $blue 65%);
+//design elements
+$transition: 300ms ease-in-out;
+
+@mixin border-radius($size) {
+	@if $size == small {
+		border-radius: 0.393rem;
+	} @else if $size == cta {
+		border-radius: 0.9rem;
+	} @else if $size == default {
+		border-radius: 2.4rem;
+	} @else if $size == large {
+		border-radius: 2.8rem;
+	} @else {
+		border-radius: 0;
+	}
+}
+// text mixin
+@mixin text(
+	$name,
+	$letter-spacing,
+	$font-family,
+	$font-weight,
+	$font-size,
+	$line-height
+) {
+	&-#{$name} {
+		letter-spacing: $letter-spacing;
+		font-family: $font-family;
+		font-weight: $font-weight;
+		font-size: $font-size;
+		line-height: $line-height;
+	}
+}
+
+.hidden-text {
+	display: none;
+}
